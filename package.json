@@ -1,0 +1,19 @@
+{
+  "name": "loginapp",
+  "version": "1.0.0",
+  "description": "loginApp with nodeJS & Angular2",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "pranalipatil209@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "http": "0.0.0",
+    "jsonwebtoken": "^7.2.1",
+    "mongoose": "^4.7.2",
+    "morgan": "^1.7.0"
+  }
+}
