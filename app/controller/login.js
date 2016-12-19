@@ -1,29 +1,35 @@
+/**
+ * login Controller
+ * @module Router
+ * @see module:models/login
+ */
+
+/**
+ * import dependencies
+ * */
 var express = require('express'),
 	app = express(),
 	Router = express.Router(),
-	jwt = require('jsonwebtoken'),
-	config = require('../config'),
-	database = require('../models/database');
+	login = require('../models/login');
 
-app.set('superSecret',config.secret);
-
+/**
+ * checks whether user is valid or not
+ * returns token as a response
+ * */
 Router.post('/login', function(req,res){
-	database.findOne({email: req.body.email},function(err,user){
-		if (err) throw err;
-		console.log(user);
-		if(!user){
-			res.json({success: false, message:'User does not exist'});
-		}
-		else if(req.body.password !== user.password){
-			res.json({success: false, message: 'Invalid Password'});
+	login.checkUser(req.body, function(err,result){
+		if(err){
+			res.json({err: err});
 		}
 		else{
-			var token = jwt.sign(user,app.get('superSecret'));
-			res.json({success: true, message: 'Successfully LoggedIn', _token : token});
+			res.json(result);
 		}
 	})
 });
 
+/**
+ * @exports Router
+ */
 module.exports = Router;
 
 // Router.post('/forgetPassword',function(req,res){
