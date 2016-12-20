@@ -1,6 +1,5 @@
 /**
  * Creating server instance & bind to the port
- * Importing required modules
  * @see module:app/config
  **/
 
